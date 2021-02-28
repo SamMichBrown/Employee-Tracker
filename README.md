@@ -1,7 +1,7 @@
 # Employee-Tracker
 
 ## Description
- An application that allows the user to view, add and update employee infortmation, including roles, managers and salaries.
+ An application that allows the user to view, add and update employee information, including roles, managers and salaries.
 
 ## Usage
 Clone the repo from github to gain all useful information, you will need node.js as well as the inquirer and npm packages.
