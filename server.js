@@ -1,6 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
+// View all Departments Table
 const viewAllDept = () => {
     connection.query(
     'SELECT * FROM `department`',
@@ -11,6 +12,7 @@ const viewAllDept = () => {
    );
 }
 
+// View all Roles Table
 const viewAllRoles = () => {
   connection.query(
     'SELECT * FROM `role`',
@@ -21,6 +23,7 @@ const viewAllRoles = () => {
   );
 }
 
+// View all Employee's Table
 const viewAllEmployees = () => {
   connection.query(
     `SELECT employee.id, employee.first_name, employee.last_name, title, department.name as department, salary, CONCAT(manager.first_name, " ", manager.last_name) as manager
@@ -38,6 +41,7 @@ const viewAllEmployees = () => {
   );
 }
 
+// Add New Department to table
 const addDepartment = () => {
   inquirer.prompt([
     {
@@ -62,6 +66,7 @@ const addDepartment = () => {
   });
 }
 
+// Add Roles, salaries, and id's to table
 const addRole = () => {
   inquirer.prompt([
     {
@@ -77,7 +82,7 @@ const addRole = () => {
     {
       type:'input',
       name:'newRoleId',
-      message:'What is the new id?'
+      message:"What is the employee's role id?"
     }
   ])
   .then(data => {
@@ -98,6 +103,7 @@ const addRole = () => {
   });
 }
 
+// Add Employees to table
 const addEmployee = () => {
   inquirer.prompt([
     {
@@ -140,6 +146,7 @@ const addEmployee = () => {
   });
 }
 
+// Update Employee Roles
 const updateRole = () => {
   connection.query(
     'SELECT * FROM  role;',
@@ -174,7 +181,7 @@ const updateRole = () => {
   });
 }
 
-// Questions ARRAY
+// Questions array/ Initial questions prompt
 const initialPrompt = () => {
   inquirer.prompt([
       {
@@ -208,9 +215,9 @@ const initialPrompt = () => {
 const connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
-  // Your MySQL username
+  // MySQL username
   user: 'root',
-  // Your MySQL password
+  // MySQL password
   password: 'PassWord',
   database: 'employee_db'
 });
